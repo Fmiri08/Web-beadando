@@ -8,13 +8,13 @@ const Router = () => {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <Home />
           </Route>
           <Route path="/favourite">
             <Favourite />
           </Route>
-          <Route path="/id/{id}">
+          <Route path="/id/:id">
             <Game />
           </Route>
           <Redirect from="*" to="/" />

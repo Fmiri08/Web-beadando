@@ -2,3 +2,20 @@
   font-family: sans-serif;
   text-align: center;
 }
+.link {
+  text-decoration: none;
+}
+.gamecard {
+  border-width: 1px;
+  border-style: solid;
+  height: 300px;
+  width: 150px;
+  color: black;
+  background-color: lightblue;
+  display: block;
+  margin: 10px;
+  float: left;
+}
+.cardDiv {
+  display: inline;
+}
