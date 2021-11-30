@@ -2,11 +2,13 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Home from "./Home";
 import Favourite from "./Favourite";
 import Game from "./Game";
+import Header from "./Header";
 
 const Router = () => {
   return (
     <div>
       <BrowserRouter>
+        <Header />
         <Switch>
           <Route exact path="/">
             <Home />

@@ -2,9 +2,6 @@
   font-family: sans-serif;
   text-align: center;
 }
-.link {
-  text-decoration: none;
-}
 .gamecard {
   border-width: 1px;
   border-style: solid;
@@ -22,4 +19,10 @@
 .image {
   height: 100px;
   width: 100px;
+}
+.headerButton {
+  display: inline;
+  margin: 20px;
+  color: black;
+  text-decoration: none;
 }

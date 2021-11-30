@@ -38,7 +38,7 @@ const Home = () => {
     const download = async () => {
       try {
         const { data } = await axios.get(
-          `https://api.boardgameatlas.com/api/search?name=${gameName}
+          `https://api.boardgameatlas.com/api/search?
            &fields=id,name,image_url&client_id=nPjnxTDLZk`
         );
 
@@ -52,7 +52,9 @@ const Home = () => {
             />
           ))
         );
-        setDoDownload(true);
+        if (games !== undefined) {
+          setDoDownload(true);
+        }
       } catch (e) {
         console.log(e);
       }
