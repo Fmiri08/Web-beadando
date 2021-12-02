@@ -18,13 +18,13 @@ const Game = () => {
     if (list === "null" || list === null) {
       list = "";
     }
-    list = list + " " + id + ",";
+    list = list + id + ",";
     localStorage.setItem("favourites", list);
     isFavourite();
   }
   function removeFavourite() {
     let list = localStorage.getItem("favourites");
-    list = list.replace(" " + id + ",", "");
+    list = list.replace("" + id + ",", "");
     localStorage.setItem("favourites", list);
     isFavourite();
   }
