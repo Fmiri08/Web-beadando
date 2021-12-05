@@ -3,12 +3,19 @@ import { useEffect, useState } from "react";
 import BoardGameCard from "./BoardGameCard";
 
 const Favourite = () => {
+  //visszakapott játékok
   const [games, setGames] = useState([]);
+  //ez a változó jelzi az effectnek, hogy leállhat
   const [doDownload, setDoDownload] = useState(false);
+  //localStorageban tároljuk a kedvencnek jelölt játékokat
   let ids = localStorage.getItem("favourites");
+  //ha üresStringgel kérjük le a játékokat, akkor azt adja vissza,
+  //mint amikor megnyitjuk a Home oldalt, ezért egy szóközt
+  //teszünk bele
   if (ids === "") {
     ids = " ";
   }
+  /* Az oldal megynitásakor fut le, működési elve megegyezik a Home-ban találhatóéval */
   useEffect(() => {
     const download = async () => {
       try {

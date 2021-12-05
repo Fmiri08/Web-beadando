@@ -12,6 +12,8 @@ const Router = () => {
           <Header />
         </div>
         <Switch>
+          {/*azért exact, mivel ha magában a path lenne, akkor mindegyik 
+          út megfelelne ennek.*/}
           <Route exact path="/">
             <Home />
           </Route>
@@ -21,6 +23,7 @@ const Router = () => {
           <Route path="/id/:id">
             <Game />
           </Route>
+          {/*Bármilyen nem létező út a home-ra vezet vissza */}
           <Redirect from="*" to="/" />
         </Switch>
       </BrowserRouter>

@@ -7,7 +7,7 @@ const Header = () => {
         Home
       </Link>
       <Link to="/favourite" className="headerButton">
-        Favourite
+        Favourites
       </Link>
     </div>
   );
