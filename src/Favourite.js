@@ -5,7 +5,10 @@ import BoardGameCard from "./BoardGameCard";
 const Favourite = () => {
   const [games, setGames] = useState([]);
   const [doDownload, setDoDownload] = useState(false);
-  const ids = localStorage.getItem("favourites");
+  let ids = localStorage.getItem("favourites");
+  if (ids === "") {
+    ids = " ";
+  }
   useEffect(() => {
     const download = async () => {
       try {
@@ -31,7 +34,7 @@ const Favourite = () => {
   }, [doDownload]);
 
   return (
-    <div>
+    <div className="cards">
       <div className="cardDiv">{doDownload && games}</div>
     </div>
   );

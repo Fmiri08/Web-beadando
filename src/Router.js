@@ -8,7 +8,9 @@ const Router = () => {
   return (
     <div>
       <BrowserRouter>
-        <Header />
+        <div>
+          <Header />
+        </div>
         <Switch>
           <Route exact path="/">
             <Home />

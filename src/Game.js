@@ -1,40 +1,51 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import parse from "html-react-parser";
 
 const Game = () => {
+  let { id } = useParams();
   const [game, setGame] = useState([]);
   const [doDownload, setDoDownload] = useState(false);
   const [favourite, setFavourite] = useState(false);
-  let { id } = useParams();
+  const [state, dispatch] = useReducer(reducer, {
+    list: localStorage.getItem("favourites")
+  });
+
+  function reducer(state, action) {
+    console.log(state);
+    switch (action) {
+      case "add":
+        addFavourite(state.list);
+        break;
+      case "remove":
+        removeFavourite(state.list);
+        break;
+      default:
+        throw new Error();
+    }
+  }
 
   function isFavourite() {
     let list = localStorage.getItem("favourites");
     setFavourite(list !== "null" && list.includes(id + ","));
   }
-  function addFavourite() {
-    let list = localStorage.getItem("favourites");
-    if (list === "null" || list === null) {
-      list = "";
+  function addFavourite(state) {
+    if (state === "null" || state === null) {
+      state = "";
     }
-    list = list + id + ",";
-    localStorage.setItem("favourites", list);
+    state = state + id + ",";
+    localStorage.setItem("favourites", state);
     isFavourite();
   }
-  function removeFavourite() {
-    let list = localStorage.getItem("favourites");
-    list = list.replace("" + id + ",", "");
-    localStorage.setItem("favourites", list);
+  function removeFavourite(state) {
+    state = state.replace("" + id + ",", "");
+    localStorage.setItem("favourites", state);
     isFavourite();
   }
 
   function click() {
-    if (!favourite) {
-      addFavourite();
-    } else {
-      removeFavourite();
-    }
+    favourite ? dispatch("remove") : dispatch("add");
   }
 
   useEffect(() => {
@@ -58,7 +69,7 @@ const Game = () => {
       <div>{doDownload && game.name}</div>
       <div>{doDownload && parse(game.description.toString())}</div>
       <button onClick={click}>
-        {favourite ? "Törlés kedvencek közül" : "Hozzáadás kedvencekhez"}
+        {favourite ? "Delete from favourites" : "Add to favourites"}
       </button>
     </div>
   );

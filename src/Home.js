@@ -64,9 +64,15 @@ const Home = () => {
 
   return (
     <div>
-      <div>
-        <input value={gameName.value} onChange={setName}></input>
-        <button onClick={downloadData}>Keresés</button>
+      <div className="searchField">
+        <input
+          value={gameName.value}
+          onChange={setName}
+          className="input"
+        ></input>
+        <button onClick={downloadData} className="button">
+          Search
+        </button>
       </div>
       <div className="cardDiv">{doDownload && games}</div>
     </div>
