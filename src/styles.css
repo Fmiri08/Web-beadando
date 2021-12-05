@@ -44,3 +44,14 @@
   margin-top: 50px;
   width: 80%;
 }
+.game {
+  display: inline-block;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.gameName,
+.gameDesc {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

@@ -73,10 +73,12 @@ const Game = () => {
     download();
   }, [doDownload]);
   return (
-    <div>
+    <div className="game">
       <img className="image" alt="" src={game.image_url}></img>
-      <div>{doDownload && game.name}</div>
-      <div>{doDownload && parse(game.description.toString())}</div>
+      <div className="gameName">{doDownload && game.name}</div>
+      <div className="gameDesc">
+        {doDownload && parse(game.description.toString())}
+      </div>
       <button onClick={click}>{buttonText}</button>
     </div>
   );
